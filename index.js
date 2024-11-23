@@ -13,8 +13,10 @@ appInsights.setup()
            .setAutoCollectConsole(true)
            .setUseDiskRetryCaching(true)
            .setSendLiveMetrics(true)
-           .setDistributedTracingMode(appInsights.DistributedTracingModes.AI)
-           .start();
+           .setDistributedTracingMode(appInsights.DistributedTracingModes.AI);
+appInsights.defaultClient.config.samplingPercentage = 50;
+appInsights.start();
+
 
 const express = require('express');
 const bodyParser = require('body-parser');
