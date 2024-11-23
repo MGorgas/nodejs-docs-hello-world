@@ -3,6 +3,7 @@
 // https://github.com/microsoft/Web-Dev-For-Beginners/tree/main/7-bank-project/api
 // ***************************************************************************
 
+const process = require('process');
 const appInsights = require('applicationinsights');
 appInsights.setup()
            .setAutoDependencyCorrelation(true)
@@ -71,7 +72,7 @@ const router = express.Router();
 // Hello World for index page
 app.get('/', function (req, res) {
     console.log("GET: Hello World");
-    return res.send("Hello World!");
+    return res.sendFile('public/index.html', {root: __dirname});
 })
 
 app.get('/api', function (req, res) {
