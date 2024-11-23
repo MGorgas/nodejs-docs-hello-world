@@ -14,6 +14,8 @@
           cfg: { // Application Insights Configuration
             connectionString: "YOUR_CONNECTION_STRING"
         }});
+
+        appInsights.trackEvent({name: "clientCount"});
     </script>
 </head>
 <body>

@@ -63,6 +63,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors({ origin: /http:\/\/(127(\.\d){3}|localhost)/}));
 app.options('*', cors());
+app.set('appInsights', appInsights.defaultClient);
 
 // ***************************************************************************
 
@@ -72,6 +73,8 @@ const router = express.Router();
 // Hello World for index page
 app.get('/', function (req, res) {
     console.log("GET: Hello World");
+    const ai = req.app.get('appInsights');
+    appInsights.trackEvent({name: "serverCount"});
     return res.sendFile('public/index.html', {root: __dirname});
 })
 
