@@ -3,6 +3,19 @@
 // https://github.com/microsoft/Web-Dev-For-Beginners/tree/main/7-bank-project/api
 // ***************************************************************************
 
+const appInsights = require('applicationinsights');
+appInsights.setup()
+           .setAutoDependencyCorrelation(true)
+           .setAutoCollectRequests(true)
+           .setAutoCollectPerformance(true, true)
+           .setAutoCollectExceptions(true)
+           .setAutoCollectDependencies(true)
+           .setAutoCollectConsole(true)
+           .setUseDiskRetryCaching(true)
+           .setSendLiveMetrics(true)
+           .setDistributedTracingMode(appInsights.DistributedTracingModes.AI)
+           .start();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors')
@@ -55,6 +68,7 @@ const router = express.Router();
 
 // Hello World for index page
 app.get('/', function (req, res) {
+    console.log("GET: Hello World");
     return res.send("Hello World!");
 })
 
